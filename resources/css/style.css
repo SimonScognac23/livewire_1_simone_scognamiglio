@@ -1,0 +1,77 @@
+/*----------------------------------- counter.blade.php---------------------------------------------------------------------------*/
+
+/* Colori della bandiera della Francia */
+:root {
+    --france-blue: #0055A4;
+    --france-white: #FFFFFF;
+    --france-red: #EF4135;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    background-color: var(--france-white);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-france-blue {
+    color: var(--france-blue);
+}
+
+.text-france-red {
+    color: var(--france-red);
+}
+
+.text-france-white {
+    color: var(--france-white);
+}
+
+.text-center {
+    color: #333;
+}
+
+.btn-group button {
+    width: 80px;
+    border-radius: 5px;
+}
+
+/* Bottoni */
+.btn-france-blue {
+    background-color: var(--france-blue);
+    border: none;
+    color: white;
+}
+
+.btn-france-red {
+    background-color: var(--france-red);
+    border: none;
+    color: white;
+}
+
+.btn-france-white {
+    background-color: var(--france-white);
+    color: var(--france-blue);
+    border: 2px solid var(--france-blue);
+}
+
+.btn-france-white:hover {
+    background-color: #f1f1f1;
+}
+
+.display-4 {
+    font-size: 4rem;
+    color: #333;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--france-blue);
+    /* Colore blu della bandiera della Francia */
+}
+
+/*----------------------------------------------------------table-article.php--------------------------------------------------------------*/
