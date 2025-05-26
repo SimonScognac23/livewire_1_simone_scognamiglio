@@ -68,6 +68,22 @@
                  <div>@error('body') {{ $message }} @enderror</div>            
             </div>
 
+
+               <!-- CAMPO IMMAGINE -->
+                <div class="mb-3">
+                    <label for="img" class="form-label fw-bold text-primary">Inserisci immagine</label>
+                    <input 
+                        wire:model="img"
+                        name="img" 
+                        type="file" 
+                        class="form-control" 
+                        id="img"
+                        placeholder="Scrivi qui la foto"
+                    >  
+                                           
+                </div>
+                
+
             <!-- BOTTONE INVIO -->
             <button type="submit" class="btn btn-dark text-white w-100 fw-bold">
                 Invia dati

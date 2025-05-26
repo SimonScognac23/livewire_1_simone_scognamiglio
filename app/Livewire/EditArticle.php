@@ -24,6 +24,8 @@ class EditArticle extends Component
     #[Validate('min:5', message: 'Titolo troppo corto3')] 
     public $body;
 
+    public $img;
+
     public $article;  // Qui dentro ho l'articolo che mi sono portato appresso
 
     public function mount()
@@ -56,6 +58,7 @@ class EditArticle extends Component
             'title' => $this->title, // Qui ci metterò il valore che l'utente ha inserito in $this->title
             'subtitle' => $this->subtitle,
             'body' => $this->body,
+            'img' => $this->img,
         ]);    // Questo è l'articolo che ci ha passato inizialmente 
 
         session()->flash('message', 'Post modificato');

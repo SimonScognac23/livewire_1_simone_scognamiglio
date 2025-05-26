@@ -5,10 +5,14 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Article;
 use Livewire\Attributes\Validate;
+use Livewire\WithFileUploads;
+
 
 
 class CreateArticle extends Component
 {
+
+    use WithFileUploads;
 
 
 #[Validate('required', message: 'Il titolo è obbligatorio.')]  // queste validate funzionano che: finche non superano lo step numero 1 ossia title, le Validate non vanno alla numero 2 ossia subtitle
@@ -31,28 +35,45 @@ class CreateArticle extends Component
     // questi tre valori sono immediatamente disponibili nel create-article.blade
     // Li posso passare alla create-article.blade tramite il wire:model
 
-     public function store()   // sovrascritta da save,presa da livewire
-    {
 
-        $this->validate();
-       // $post = Post::create([
-       //     'title' => $this->title
-      //  ]);
+     public $img;
 
-      Article::create([    // ci richiamiamo il modello Article che andra a scrivere nel db
-        'title' => $this->title, // qui ci mettero il valore che l'utente ha inserito in $this->title
- 'subtitle' => $this->subtitle,
-  'body' => $this->body,
 
-      ]);  // quindi l'utente inserisce i dati nel form, livewire li valorizza nei suoi attributi pubblici attraverso il livewire model attraverso la action
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   $this->clearForm();
 
-   //$this->reset();  metodo che se non passiamo nulla al suo interno lui svuota tutti gli attributi pubblici collegati con il wire model
- 
-        session()->flash('message', 'post inserito'); // metodo session che rispondera un oggetto al suo interno c'è il metodo flash
+public function store()
+{
+    // Validazione dei dati
+    $this->validate();
+
+    // Controllo se l'utente ha caricato un'immagine
+    if ($this->img) {
+        // Salva l'immagine in storage/app/public/img e ottieni il percorso relativo
+        $imagePath = $this->img->store('image','public'); // es: img/nomefile.jpg
+    } else {
+        // Usa il percorso dell'immagine di default salvata in public/imgArticles/default.jpg
+        $imagePath = 'imgArticles/default.jpg';
     }
 
+    // Creazione dell'articolo (con o senza immagine personalizzata)
+    Article::create([
+        'title' => $this->title,
+        'subtitle' => $this->subtitle,
+        'body' => $this->body,
+        'img' => $imagePath, // es: img/nomefile.jpg oppure imgArticles/default.jpg
+    ]);
+
+    // Reset del form
+    $this->clearForm();
+
+    // Messaggio di successo
+    session()->flash('message', 'Post inserito con successo!');
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected function clearForm(){  //incapsulo la mia logica dentro un altro metodo 
         //ora la funzione clearform non è accessibile all esterno IMPORTANTE!!!
@@ -62,6 +83,8 @@ class CreateArticle extends Component
         $this->body = "";
 
     }
+    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function render()
     {
