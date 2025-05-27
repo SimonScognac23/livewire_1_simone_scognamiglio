@@ -24,6 +24,8 @@ After creating the article with the collected data, I reset the form fields by c
 
 Finally, I defined the component’s render method to return the livewire.create-article view, where the form for data entry is located.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 #   LIVEWIRE
