@@ -11,6 +11,7 @@ Nel metodo store(), eseguo la validazione dei dati, poi controllo se l’utente 
 Dopo aver creato l’articolo con i dati raccolti, azzero i campi del form chiamando il metodo privato clearForm() per ripulire i valori e preparo un messaggio di conferma da mostrare all’utente.
 
 Infine, ho definito il rendering del componente che restituisce la vista livewire.create-article, dove si trova il form per l’inserimento dei dati.
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 English
 In this project, I created a Livewire component called CreateArticle to handle the creation of articles on my website. I defined some public properties like $title, $subtitle, $body, and $img, which represent the form fields the user must fill out to add a new article.
